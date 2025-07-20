@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туристическая компания Занзибар Тур</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            transform: scale(1.1);
+            font-weight: bold;
+        }
+        
+        .social-links a {
+            margin-left: 15px;
+            color: #2c3e50;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #1a2530;
+        }
+        
+        /* Приветствие */
+        #welcome {
+            padding: 50px 0;
+            background-color: #e9f5ff;
+            margin-bottom: 0;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 400px; /* Минимальная высота блока */
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .hero p {
+            margin-bottom: 30px;
+            color: #34495e;
+        }
+
+        /* Кнопка */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Адаптивные стили для приветствия */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+            }
+            
+            .hero-content, 
+            .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+                order: 2;
+            }
+            
+            .hero-content {
+                order: 1;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-image {
+                height: 250px;
+            }
+        }
+        
+        /* Статьи */
+        #articles {
+            padding: 50px 0;
+        }
+        
+        .article {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            min-height: 400px; /* Минимальная высота блока */
+        }
+
+        #articles .article:not(:last-child) {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .article:last-child {
+            border-bottom: none;
+        }
+        
+        /* Четные статьи (2, 4, 6...) - изображение слева */
+        .article:nth-child(even) {
+            flex-direction: row;
+        }
+        
+        /* Нечетные статьи (1, 3, 5...) - изображение справа */
+        .article:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .article-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: stretch;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .article h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .article p {
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+        
+        .article-fulltext {
+            display: none;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .article-fulltext.show {
+            display: block;
+        }
+
+        /* Фиксированный размер кнопок "Читать статью" */
+        .article .btn.read-more {
+            width: 140px !important;        /* Фиксированная ширина */
+            min-width: 140px !important;    /* Минимальная ширина (на случай очень маленьких экранов) */
+            max-width: 140px !important;    /* Максимальная ширина */
+            flex: 0 0 auto !important;      /* Запрет растягивания (flex-grow: 0) и сжатия (flex-shrink: 0) */
+            white-space: nowrap !important; /* Запрет переноса текста */
+            display: inline-flex !important; /* Используем inline-flex вместо block */
+            justify-content: center !important; /* Центрируем текст */
+        }
+        
+        /* Галерея */
+        #gallery {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+            position: relative;
+        }
+
+        .gallery-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .gallery-item {
+            position: relative;
+            flex: 0 0 auto;
+            width: calc(25% - 15px);
+            min-width: calc(25% - 15px);
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(240, 240, 240, 1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(150, 150, 150, 0.8);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            overflow: auto;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+        .gallery-caption h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        
+        .gallery-caption p {
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            max-height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /*этот параметр обрезает текст после 3-й строки и добавляет ... (многоточие).*/
+            -webkit-box-orient: vertical;
+        }
+        
+        .gallery-caption .btn {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            background-color: transparent;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: 1px solid white;
+            margin-top: auto;
+            margin-bottom: 2px; /*отступ от нижней части слайда галереи */
+        }
+        
+        .gallery-caption .btn:hover {
+            background-color: rgba(0, 0, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .gallery-item {
+                width: calc(33.333% - 15px);
+                min-width: calc(33.333% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: calc(50% - 10px);
+                min-width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-item {
+                width: calc(100% - 8px);
+                min-width: calc(100% - 8px);
+            }
+        }
+        
+        /* Преимущества */
+        #benefits {
+            padding: 50px 0;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: #ddd;
+        }
+
+        .benefit-item {
+            padding: 30px 20px;
+            text-align: center;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .benefit-item:nth-child(3n) {
+                border-right: none;
+        }
+
+        .benefit-item:not(:nth-child(3n)) {
+            border-right: 1px solid #ddd;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .benefit-item h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 992px) {
+            .benefits-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+    
+            .benefit-item:nth-child(2n) {
+            border-right: none;
+            }
+    
+            .benefit-item:not(:nth-child(2n)) {
+                border-right: 1px solid #ddd;
+            }
+        }
+        
+        /* Форма */
+        #contact {
+            padding: 50px 0;
+            background-color: #e9f5ff;
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        textarea {
+            min-height: 150px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .radio-group {
+            margin: 10px 0;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .radio-option label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-social a:hover {
+            color: #bdc3c7;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #bdc3c7;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                justify-content: center;
+                margin: 15px 0;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .social-links {
+                margin-top: 15px;
+            }
+            
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefit-item:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+            
+            .gallery-nav {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-nav {
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-prev {
+                left: 5px;
+            }
+            
+            .gallery-next {
+                right: 5px;
+            }
+        }
+
+        /* Полноэкранный режим для галереи */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .fullscreen-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fullscreen-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .fullscreen-image {
+            max-height: 60vh;
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .fullscreen-details {
+            background-color: #fff;
+            padding: 20px;
+            color: #333;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 5px;
+            max-height: 30vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .fullscreen-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            padding-bottom: 10px;
+            z-index: 1;
+        }
+
+        .fullscreen-details p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .close-fullscreen {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Стили для полосы прокрутки */
+        .fullscreen-details::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .fullscreen-details::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .fullscreen-details::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .fullscreen-details::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Туристическая компания</div>
+            <nav>
+                <ul>
+                    <li><a href="#welcome">Приветствия</a></li>
+                    <li><a href="#articles">Статьи</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#benefits">Почему выбирают нас</a></li>
+                    <li><a href="#contact">Свяжитесь с нами</a></li>
+                </ul>
+            </nav>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Приветствие -->
+    <section id="welcome">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Добро пожаловать на Занзибар</h1>
+                    <p>Откройте для себя удивительные места Занзибара вместе с нами. Мы делимся полезными советами, интересными маршрутами и вдохновляющими историями.</p>
+                    <a href="#articles" class="btn">Читать статьи</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/DSC01377.JPG?raw=true" alt="Занзибар Приветствие">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Статьи -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <!-- Статья 1 (нечетная) - изображение справа -->
+            <div class="article">
+                <div class="article-image">
+                    <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9F%D0%B0%D0%BB%D1%8C%D0%BC%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B2%D0%BE%D1%80_%D0%9F%D1%80%D0%B8%D1%80%D0%BE%D0%B4%D0%B0.jpg?raw=true" alt="Природа">
+                </div>
+                <div class="article-content">
+                    <h2>Природа Занзибара</h2>
+                    <p>Откройте для себя самые красивые парки острова и познакомьтесь с их обитателями</p>
+                    <a href="#" class="btn read-more" data-target="article1">Читать статью</a>
+                    <div id="article1" class="article-fulltext">
+                        <p>1. Занзибар - это настоящий тропический рай с уникальной экосистемой. Национальный парк Джозани-Чвака-Бэй является домом для редких красных колобусов - эндемичных обезьян, которых больше нигде в мире не встретишь. Мангровые леса на восточном побережье создают уникальную среду обитания для сотен видов птиц и морских обитателей.</p>
+                        <p>2. Особого внимания заслуживают морские заповедники вокруг острова, где можно увидеть коралловые рифы с их яркими обитателями: рыбами-клоунами, муренами, морскими черепахами и даже дельфинами. В сезон миграции (июль-сентябрь) у берегов Занзибара появляются китовые акулы - безобидные гиганты, с которыми можно плавать.</p>
+                        <p>3. Не забудьте посетить остров Черепах (Prison Island), где живут гигантские альдабрские черепахи возрастом более 100 лет. Это уникальное место, где можно вблизи пообщаться с этими древними существами.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Статья 2 (четная) - изображение слева -->
+            <div class="article">
+                <div class="article-image">
+                    <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9F%D0%BB%D1%8F%D0%B6%D0%B8%201.jpg?raw=true" alt="Пляжи Занзибара">
+                </div>
+                <div class="article-content">
+                    <h2>Пляжи Занзибара</h2>
+                    <p>Мы подскажем, где расположены самые яркие пляжи Занзибара</p>
+                    <a href="#" class="btn read-more" data-target="article2">Читать статью</a>
+                    <div id="article2" class="article-fulltext">
+                        <p>Занзибар славится своими белоснежными пляжами с мелким, как мука, песком и бирюзовой водой. Вот топ-5 пляжей, которые стоит посетить:</p>
+                        <p><strong>1. Нунгви</strong> - самый известный пляж на севере острова с идеальными условиями для купания в любое время суток. Здесь почти нет приливов/отливов, а вода всегда кристально чистая.</p>
+                        <p><strong>2. Кендва</strong> - более спокойная альтернатива Нунгви, идеальная для романтического отдыха. Особенно красиво здесь во время отлива, когда обнажаются песчаные отмели.</p>
+                        <p><strong>3. Падже</strong> - уникальный пляж на востоке, где во время отлива можно пройти несколько километров по мелководью к красивейшим коралловым рифам. А ещё тут рай для сёрфингистов. </p>
+                        <p><strong>4. Понгве</strong> - уединенное место с пальмовыми рощами прямо у кромки воды. Идеально для тех, кто хочет уединения.</p>
+                        <p><strong>5. Мтенде</strong> - знаменит своими причудливыми коралловыми образованиями, которые создают уникальные природные скульптуры во время отлива.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Статья 3 (нечетная) - изображение справа -->
+            <div class="article">
+                <div class="article-image">
+                    <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20%D0%9A%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B0.jpg?raw=true" alt="История">
+                </div>
+                <div class="article-content">
+                    <h2>История Занзибара</h2>
+                    <p>Кратко об истории, культуре и жителях Занзибара</p>
+                    <a href="#" class="btn read-more" data-target="article3">Читать статью</a>
+                    <div id="article3" class="article-fulltext">
+                        <p>1. Занзибар имеет богатую и сложную историю, сформированную под влиянием арабских, персидских, индийских, португальских и британских культур. В XIX веке остров был центром торговли специями и печально известного работоргового рынка.</p>
+                        <p>2. Стоун-Таун - историческое сердце Занзибара, включенное в список Всемирного наследия ЮНЕСКО. Здесь можно увидеть уникальную смесь арабской, персидской и африканской архитектуры: резные деревянные двери, узкие извилистые улочки и старинные здания из кораллового камня.</p>
+                        <p>3. Родина Фредди Меркьюри:</strong> Именно на Занзибаре 5 сентября 1946 года родился Фарух Булсара - будущая легенда рок-музыки Фредди Меркьюри. Его семья принадлежала к парсийскому меньшинству (выходцы из Персии). Дом, где он жил в Стоун-Тауне, сохранился до наших дней и стал местом паломничества поклонников Queen.</p>
+                        <p>4. Ежегодно в феврале на Занзибаре проходит Фестиваль культуры и искусства, где можно познакомиться с местными традициями, музыкой таараб и кухней.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Статья 4 (четная) - изображение слева -->
+            <div class="article">
+                <div class="article-image">
+                    <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%A0%D1%8B%D0%B1%D0%B0%D0%BB%D0%BA%D0%B0%20%D0%97%D0%B0%D0%BD%D0%B7%D0%B8%D0%B1%D0%B0%D1%80.jpg?raw=true" alt="Рыбалка">
+                </div>
+                <div class="article-content">
+                    <h2>Рыбалка на Занзибаре</h2>
+                    <p>Как поймать марлина и доставить его до берега</p>
+                    <a href="#" class="btn read-more" data-target="article4">Читать статью</a>
+                    <div id="article4" class="article-fulltext">
+                        <p>Рыбалка на Занзибаре - это незабываемое приключение для настоящих ценителей. Лучшее время для рыбалки - с сентября по март, когда воды вокруг острова богаты крупной рыбой.</p>
+                        <p><strong>Глубоководная рыбалка:</strong> В 5-10 км от берега можно поймать голубого марлина (до 500 кг!), парусника, тунца и ваху. Опытные капитаны знают лучшие места и помогут вам в этом захватывающем соревновании с морскими гигантами.</p>
+                        <p><strong>Традиционная рыбалка:</strong> Попробуйте местные методы - рыбалку на доу (традиционных лодках) с использованием простых снастей. Это отличный способ прочувствовать аутентичную атмосферу и, возможно, поймать барракуду или королевскую макрель.</p>
+                        <p><strong>Правила и советы:</strong> Большинство рыболовных туров начинаются рано утром (около 6:00). Не забудьте солнцезащитный крем и головной убор. Пойманную рыбу можно приготовить в вашем отеле или в местных ресторанах - это будет самый свежий ужин в вашей жизни!</p>
+                        <p>Важно: Занзибар поддерживает принципы устойчивого рыболовства - слишком мелкую рыбу и редкие виды отпускают обратно в море.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Галерея -->
+    <section id="gallery" class="gallery">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 30px;">Наши путешествия</h2>
+        <div class="gallery-wrapper">
+            <div class="gallery-nav gallery-prev"><i class="fas fa-chevron-left"></i></div>
+            <div class="gallery-nav gallery-next"><i class="fas fa-chevron-right"></i></div>
+            <div class="gallery-container">
+                <div class="gallery-slide">
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9C%D0%BD%D0%B5%D0%BC%D0%B1%D0%B0.jpg?raw=true" alt="Остров Мнемба">
+                        <div class="gallery-caption">
+                            <h3>Остров Мнемба</h3>
+                            <p>Самый красивый остров у берегов Занзибара с мелководными лагунами</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Остров Мнемба - это небольшой частный остров у северо-восточного побережья Занзибара, известный своими кристально чистыми водами и богатым подводным миром. Остров окружен коралловым рифом, что делает его идеальным местом для сноркелинга и дайвинга. Здесь можно увидеть разноцветных тропических рыб, морских черепах и даже дельфинов. На острове расположен роскошный курорт, предлагающий эксклюзивный отдых в бунгало на берегу океана.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9C%D1%82%D0%B5%D0%BD%D0%B4%D0%B5.jpg?raw=true" alt="пляж Мтенде">
+                        <div class="gallery-caption">
+                            <h3>пляж Мтенде</h3>
+                            <p>Занзибарская Краби с причудливыми коралловыми скалами</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Пляж Мтенде расположен на юго-восточном побережье Занзибара и славится своими уникальными коралловыми образованиями, которые создают причудливые формы при отливе. Это идеальное место для любителей фотографии - во время отлива обнажаются удивительные природные скульптуры из коралла. Пляж менее посещаем туристами, что делает его отличным выбором для тех, кто ищет уединения. Вода здесь теплая и прозрачная, а местные жители предлагают свежие морепродукты прямо на берегу.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/Blue%20Safari.JPG?raw=true" alt="Blue Safari">
+                        <div class="gallery-caption">
+                            <h3>Blue Safari</h3>
+                            <p>Мангровые леса, деревня баобабов и дайвинг у исчезающего острова</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Blue Safari - это уникальный тур, сочетающий в себе посещение мангровых лесов, деревни с древними баобабами и дайвинг у исчезающего острова. Тур начинается с прогулки на лодке через мангровые заросли, где можно наблюдать за богатой экосистемой. Далее - посещение традиционной рыбацкой деревни, где растут многовековые баобабы. Завершается тур дайвингом у небольшого острова, который постепенно исчезает под воздействием эрозии. Это возможность увидеть уникальные коралловые образования и подводную жизнь.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/The%20Rock.JPG?raw=true" alt="Ресторан The Rock">
+                        <div class="gallery-caption">
+                            <h3>Ресторан The Rock</h3>
+                            <p>Самый известный ресторан Занзибара - его визитная карточка</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Ресторан The Rock - это, пожалуй, самый фотографируемый ресторан Занзибара, расположенный на скале посреди океана у побережья Мичензани. Во время прилива добраться до ресторана можно только на лодке, а во время отлива можно пройти пешком. Ресторан славится своими блюдами из морепродуктов, особенно омарами и осьминогами, приготовленными по местным рецептам. Вид с террасы ресторана на закате - одно из самых романтичных зрелищ на Занзибаре. Вместимость ресторана небольшая, поэтому столики лучше бронировать заранее.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-slide">
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2%20%D1%87%D0%B5%D0%B5%D1%80%D0%B5%D0%BF%D0%B0%D1%85%201.jpg?raw=true" alt="Остров Черепах">
+                        <div class="gallery-caption">
+                            <h3>Остров Черепах</h3>
+                            <p>Огромные сейшельские черепахи готовы к фотосессии с вами</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Остров Черепах (Prison Island) - это небольшой остров недалеко от Стоун-Тауна, где обитают гигантские сейшельские черепахи, некоторые из которых старше 100 лет. Черепах можно кормить (разрешенной едой, которую продают на острове) и фотографироваться с ними. Кроме черепах, на острове есть руины старой тюрьмы, построенной в 19 веке, и прекрасный пляж с белым песком. Остров окружен коралловым рифом, что делает его отличным местом для сноркелинга. Экскурсия на остров обычно занимает полдня.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9F%D0%B0%D1%80%D0%BA%20%D0%94%D0%B6%D0%BE%D0%B7%D0%B0%D0%BD%D0%B8.jpg?raw=true" alt="Парк Джозани">
+                        <div class="gallery-caption">
+                            <h3>Парк Джозани</h3>
+                            <p>Приключение в тропических лесах Занзибара</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Национальный парк Джозани - это единственный национальный парк на Занзибаре, занимающий площадь около 50 кв.км. Здесь можно увидеть редких красных колобусов - эндемичных обезьян Занзибара, которые находятся под угрозой исчезновения. Парк представляет собой смесь тропического леса, мангровых зарослей и болот. Экскурсия по парку включает прогулку по деревянным мосткам через мангровый лес, где можно наблюдать за крабами и другими обитателями. Лучшее время для посещения - раннее утро, когда животные наиболее активны.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9D%D0%B0%D0%BA%D1%83%D0%BF%D0%B5%D0%BD%D0%B4%D0%B0.jpg?raw=true" alt="Накупенда">
+                        <div class="gallery-caption">
+                            <h3>Накупенда</h3>
+                            <p>Исчезающие острова около СтоунТуана</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Накупенда - это группа небольших песчаных островков, которые появляются только во время отлива. Это уникальное природное явление привлекает туристов возможностью постоять посреди океана на крошечном кусочке суши. Во время экскурсии вас отвезут на лодке к этим островам, где можно сделать потрясающие фотографии, собирать морские звезды и ракушки (которые потом нужно вернуть в воду), а также поплавать в кристально чистой воде. Экскурсия обычно включает пикник с морепродуктами на одном из островков.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/%D0%9A%D0%B5%D0%BD%D0%B4%D0%B2%D0%B0%20%D0%B8%20%D0%9D%D1%83%D0%BD%D0%B3%D0%B2%D0%B8.jpg?raw=true" alt="Пляжи Кендва и Нунгви">
+                        <div class="gallery-caption">
+                            <h3>Пляжи Кендва и Нунгви</h3>
+                            <p>Лучшие пляжи для отдыха с комфортом</p>
+                            <a href="#" class="btn gallery-more" 
+                               data-full-description="Пляжи Кендва и Нунгви на северной оконечности Занзибара считаются одними из лучших на острове. Здесь белоснежный мелкий песок, бирюзовая вода и пологий вход в океан. Нунгви более развит в плане инфраструктуры - здесь много отелей, ресторанов и водных развлечений. Кендва - более спокойное место, идеальное для романтического отдыха. Оба пляжа отлично подходят для купания в любое время суток, так как здесь почти нет приливов и отливов. Вечером можно наблюдать, как местные рыбаки возвращаются с уловом на традиционных лодках доу.">
+                                Узнать больше
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!-- Преимущества -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Почему выбирают нас</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon"><img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/airplane-48.png?raw=true" alt="Глобальный охват"></div>
+                    <h3>Широкий охват</h3>
+                    <p>Мы предлагаем экскурсии в самые удалённые уголки Занзибара</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/map_marker-48.png?raw=true" alt="Глобальный охват"></div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Прокладываем маршруты с учетом всех ваших пожеланий</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/movie-48.png?raw=true" alt="Глобальный охват"></div>
+                    <h3>Бесплатные фотосессии</h3>
+                    <p>Наши гиды по совместительству являются профессиональными фотографами</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/alarm_clock-48.png?raw=true" alt="Глобальный охват"></div>
+                    <h3>Экономия времени</h3>
+                    <p>Быстрый транспорт и оптимальные маршруты для экономии Вашего времени</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/face-48.png?raw=true" alt="Глобальный охват"></div>
+                    <h3>Безопасность</h3>
+                    <p>Полное сопровождение и страховка на все время поездки</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><img src="https://github.com/GrishaMal/my_travel_company/blob/main/images/genius-48.png?raw=true" alt="Глобальный охват"></div>
+                    <h3>Наукоёмкая дезинсекция</h3>
+                    <p>Использование современных достижений науки для отпугивания малярийных комаров</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Форма -->
+    <section id="contact" class="contact-form">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 30px;">Свяжитесь с нами</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Номер телефона</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label>Как с вами связаться?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="contact-email" name="contact-method" value="email" checked>
+                            <label for="contact-email">По почте</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="contact-phone" name="contact-method" value="phone">
+                            <label for="contact-phone">По телефону</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="contact-telegram" name="contact-method" value="telegram">
+                            <label for="contact-telegram">Через Telegram</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Тема сообщения</label>
+                    <select id="subject" name="subject">
+                        <option value="story">Отправить свою историю</option>
+                        <option value="join">Присоединиться к путешествию</option>
+                        <option value="filming">Принять участие в съемках фильма</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Текст сообщения</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="not-robot" name="not-robot" required>
+                    <label for="not-robot">Я не робот</label>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 16px;">Отправить сообщение</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Туристическая компания. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Полноэкранный оверлей для галереи -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <button class="close-fullscreen">&times;</button>
+        <div class="fullscreen-content">
+            <img class="fullscreen-image" id="fullscreenImage" src="" alt="">
+            <div class="fullscreen-details" id="fullscreenDetails"></div>
+        </div>
+    </div>
+
+    <script>
+    // Обработчик для кнопок "Читать статью" (в статьях)
+    document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-target');
+            const fullText = document.getElementById(targetId);
+            
+            // Закрываем все другие открытые статьи
+            document.querySelectorAll('.article-fulltext').forEach(el => {
+                if (el.id !== targetId) {
+                    el.classList.remove('show');
+                }
+            });
+            
+            // Переключаем текущую статью
+            fullText.classList.toggle('show');
+            
+            // Плавная прокрутка только при открытии
+            if (fullText.classList.contains('show')) {
+                fullText.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }
+        });
+    });
+
+    // Обработчик для кнопок "Узнать больше" (в галерее)
+    document.querySelectorAll('.gallery-more').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const galleryItem = this.closest('.gallery-item');
+            const imgSrc = galleryItem.querySelector('img').src;
+            const title = galleryItem.querySelector('h3').textContent;
+            const shortDescription = galleryItem.querySelector('p').textContent;
+            const fullDescription = this.getAttribute('data-full-description');
+        
+            // Устанавливаем содержимое для полноэкранного режима
+            document.getElementById('fullscreenImage').src = imgSrc;
+            document.getElementById('fullscreenImage').alt = title;
+        
+            // Создаем HTML с подробным описанием
+            /*document.getElementById('fullscreenDetails').innerHTML = 
+            `
+                <h3>${title}</h3>
+                <p><em>${shortDescription}</em></p>
+                <p>${fullDescription}</p>
+                
+                <p><strong>Рекомендации:</strong></p>
+                <ul>
+                    <li>Лучшее время для посещения: утро или закат</li>
+                    <li>Рекомендуемая продолжительность: 2-4 часа</li>
+                    <li>Что взять с собой: купальные принадлежности, солнцезащитный крем, фотоаппарат</li>
+                </ul> 
+                
+            `   ;*/
+
+            // Создаем HTML с подробным описанием
+            document.getElementById('fullscreenDetails').innerHTML = 
+            `
+                <h3>${title}</h3>
+                <p><em>${shortDescription}</em></p>
+                <p>${fullDescription}</p>
+                
+            `   ;
+
+            // Показываем полноэкранный режим
+            document.getElementById('fullscreenOverlay').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Закрытие полноэкранного режима галереи
+    document.querySelector('.close-fullscreen').addEventListener('click', function() {
+        document.getElementById('fullscreenOverlay').classList.remove('show');
+        document.body.style.overflow = '';
+    });
+
+    // Закрытие при клике вне области изображения
+    document.getElementById('fullscreenOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Скрипт для навигации галереи
+    const galleryContainer = document.querySelector('.gallery-container');
+    const gallerySlides = document.querySelectorAll('.gallery-slide');
+    const prevBtn = document.querySelector('.gallery-prev');
+    const nextBtn = document.querySelector('.gallery-next');
+    let currentIndex = 0;
+    const slideCount = gallerySlides.length;
+
+    function updateGallery() {
+        const slideWidth = galleryContainer.offsetWidth;
+        galleryContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentIndex === slideCount - 1 ? '0.5' : '1';
+        prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'all';
+        nextBtn.style.pointerEvents = currentIndex === slideCount - 1 ? 'none' : 'all';
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < slideCount - 1) {
+            currentIndex++;
+            updateGallery();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateGallery();
+        }
+    });
+
+    // Инициализация галереи
+    updateGallery();
+
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', updateGallery);
+
+    // Показываем/скрываем кнопки навигации галереи
+    const gallerySection = document.getElementById('gallery');
+    gallerySection.addEventListener('mouseenter', () => {
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentIndex === slideCount - 1 ? '0.5' : '1';
+    });
+    
+    gallerySection.addEventListener('mouseleave', () => {
+        prevBtn.style.opacity = '0';
+        nextBtn.style.opacity = '0';
+    });
+</script>
+</body>
+</html>
